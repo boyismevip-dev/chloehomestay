@@ -1,0 +1,44 @@
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="f-brand">
+      <img src="/img/brand/logo-white.png" alt="Chloe Homestay" width="80" height="87" loading="lazy">
+      <p><%= t('footer.tag') %></p>
+    </div>
+    <div>
+      <h3><%= t('footer.explore') %></h3>
+      <ul>
+        <li><a href="<%= p.rooms %>"><%= t('nav.rooms') %></a></li>
+        <li><a href="<%= p.services %>"><%= t('nav.services') %></a></li>
+        <li><a href="<%= p.contact %>"><%= t('nav.contact') %></a></li>
+      </ul>
+    </div>
+    <div>
+      <h3><%= t('footer.contact') %></h3>
+      <ul>
+        <li><a href="tel:<%= site.phoneIntl %>"><%= site.phoneDisplay %></a></li>
+        <li><a href="mailto:<%= site.email %>"><%= site.email %></a></li>
+        <li><a href="<%= site.zalo %>" target="_blank" rel="noopener">Zalo</a></li>
+        <li><a href="<%= site.facebook %>" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="<%= site.mapLink %>" target="_blank" rel="noopener">Google Maps</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3><%= t('contact.address') %></h3>
+      <p class="f-addr"><%= address %></p>
+      <p class="f-addr"><%= t('contact.checkin') %> <%= site.checkIn %> · <%= t('contact.checkout') %> <%= site.checkOut %></p>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© <%= new Date().getFullYear() %> Chloe Homestay. <%= t('footer.rights') %></span>
+    <span><%= t('footer.note') %> <a href="tel:<%= site.phoneIntl %>"><%= site.phoneDisplay %></a></span>
+  </div>
+</footer>
+
+<div class="float-cta" role="group" aria-label="<%= t('footer.note') %>">
+  <a class="fc fc-call" href="tel:<%= site.phoneIntl %>"><svg class="ic"><use href="#i-phone"/></svg><span><%= t('float.call') %></span></a>
+  <a class="fc fc-zalo" href="<%= site.zalo %>" target="_blank" rel="noopener"><svg class="ic"><use href="#i-msg"/></svg><span><%= t('float.zalo') %></span></a>
+</div>
+<script src="/js/main.js?v=<%= v %>" defer></script>
+</body>
+</html>

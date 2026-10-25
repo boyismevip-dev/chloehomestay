@@ -1,0 +1,65 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow"><%= t('contact.eyebrow') %></p>
+    <h1><%= t('contact.title') %></h1>
+    <p class="lead"><%= t('contact.lead') %></p>
+  </div>
+</section>
+
+<section class="section section-tight">
+  <div class="wrap contact-grid">
+    <div class="contact-cards">
+      <a class="c-card c-card-main" href="tel:<%= site.phoneIntl %>">
+        <svg class="ic ic-lg"><use href="#i-phone"/></svg>
+        <span class="c-label"><%= t('contact.hotline') %></span>
+        <strong><%= site.phoneDisplay %></strong>
+      </a>
+      <a class="c-card" href="<%= site.zalo %>" target="_blank" rel="noopener">
+        <svg class="ic ic-lg"><use href="#i-msg"/></svg>
+        <span class="c-label"><%= t('contact.zalo') %></span>
+        <strong><%= site.phoneDisplay %></strong>
+      </a>
+      <a class="c-card" href="<%= site.facebook %>" target="_blank" rel="noopener">
+        <svg class="ic ic-lg"><use href="#i-fb"/></svg>
+        <span class="c-label"><%= t('contact.facebook') %></span>
+        <strong><%= site.facebookName %></strong>
+      </a>
+      <a class="c-card" href="mailto:<%= site.email %>">
+        <svg class="ic ic-lg"><use href="#i-msg"/></svg>
+        <span class="c-label">Email</span>
+        <strong class="c-email"><%= site.email %></strong>
+      </a>
+      <div class="c-card c-card-static">
+        <svg class="ic ic-lg"><use href="#i-clock"/></svg>
+        <span class="c-label"><%= t('contact.hours') %></span>
+        <strong><%= t('contact.checkin') %> <%= site.checkIn %> · <%= t('contact.checkout') %> <%= site.checkOut %></strong>
+      </div>
+      <p class="c-tell"><%= t('contact.tell') %></p>
+    </div>
+    <div class="contact-map">
+      <div class="map map-tall">
+        <iframe title="<%= t('contact.map') %>" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=<%= encodeURIComponent(site.address) %>&output=embed"></iframe>
+      </div>
+      <p class="map-addr"><svg class="ic"><use href="#i-pin"/></svg><span><%= address %></span></p>
+      <a class="btn btn-line" href="<%= site.mapLink %>" target="_blank" rel="noopener"><%= t('contact.directions') %><svg class="ic"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-sand section-tight">
+  <div class="wrap faq">
+    <h2 data-reveal><%= t('faq.title') %></h2>
+    <% [1,2,3,4].forEach(function (n) { %>
+    <details class="faq-item">
+      <summary><%= t('faq.q' + n) %></summary>
+      <p><%= t('faq.a' + n) %></p>
+    </details>
+    <% }) %>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>

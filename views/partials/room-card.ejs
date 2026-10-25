@@ -1,0 +1,16 @@
+<% const cover = r.photos[0]; %>
+<article class="room-card" data-balcony="<%= r.balcony ? 1 : 0 %>" data-window="<%= r.window ? 1 : 0 %>" data-price="<%= r.price %>" data-reveal>
+  <a class="rc-media" href="<%= p.room(r.slug) %>" aria-label="<%= t('rooms.view') %>: <%= L(r.name) %>">
+    <% if (cover) { %>
+    <img src="<%= cover.thumb %>" alt="<%= L(r.name) %> — Chloe Homestay" width="640" height="853" loading="lazy">
+    <% } else { %>
+    <span class="rc-ph" aria-hidden="true"><img src="/img/brand/logo-white.png" alt="" width="90" height="98" loading="lazy"><small><%= t('rooms.soon') %></small></span>
+    <% } %>
+    <% if (r.dorm) { %><span class="rc-badge"><%= t('rooms.dorm') %></span><% } else if (r.balcony) { %><span class="rc-badge"><%= t('rooms.balcony') %></span><% } %>
+  </a>
+  <div class="rc-body">
+    <p class="rc-tag"><%= L(r.tag) %></p>
+    <h3 class="rc-name"><a href="<%= p.room(r.slug) %>"><%= L(r.name) %></a></h3>
+    <p class="rc-price"><span><%= t('rooms.from') %></span> <strong><%= money(r.price) %>đ</strong> <span><%= t('rooms.night') %></span></p>
+  </div>
+</article>

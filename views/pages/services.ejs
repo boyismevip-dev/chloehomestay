@@ -1,0 +1,56 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow"><%= t('svc.eyebrow') %></p>
+    <h1><%= t('svc.title') %></h1>
+    <p class="lead"><%= t('svc.lead') %></p>
+  </div>
+</section>
+
+<section class="section section-tight">
+  <div class="wrap svc-rows">
+    <article class="svc-row" data-reveal>
+      <div class="svc-media"><img src="/img/services/helmet.webp" alt="<%= t('svc.bike.t') %>" width="1400" height="700" loading="lazy"></div>
+      <div class="svc-copy">
+        <svg class="ic ic-lg"><use href="#i-bike"/></svg>
+        <h2><%= t('svc.bike.t') %></h2>
+        <p><%= t('svc.bike.d') %></p>
+        <p class="svc-price"><%= t('svc.bike.p') %></p>
+      </div>
+    </article>
+    <article class="svc-row svc-row-rev" data-reveal>
+      <div class="svc-media"><img src="/img/rooms/gac-mai/10.webp" alt="<%= t('svc.laundry.t') %>" width="1400" height="1050" loading="lazy"></div>
+      <div class="svc-copy">
+        <svg class="ic ic-lg"><use href="#i-shirt"/></svg>
+        <h2><%= t('svc.laundry.t') %></h2>
+        <p><%= t('svc.laundry.d') %></p>
+        <p class="svc-price"><%= t('svc.laundry.p') %></p>
+      </div>
+    </article>
+    <article class="svc-row" data-reveal>
+      <div class="svc-media"><img src="/img/services/amenity-kit.webp" alt="<%= t('svc.kit.t') %>" width="1400" height="990" loading="lazy"></div>
+      <div class="svc-copy">
+        <svg class="ic ic-lg"><use href="#i-gift"/></svg>
+        <h2><%= t('svc.kit.t') %></h2>
+        <p><%= t('svc.kit.d') %></p>
+        <p class="svc-price"><%= t('svc.kit.p') %></p>
+      </div>
+    </article>
+    <p class="svc-note"><%= t('svc.note') %></p>
+  </div>
+</section>
+
+<section class="section section-sand section-tight">
+  <div class="wrap times" data-reveal>
+    <h2><%= t('svc.times.title') %></h2>
+    <div class="times-grid">
+      <div><svg class="ic"><use href="#i-clock"/></svg><span><%= t('contact.checkin') %></span><strong><%= site.checkIn %></strong></div>
+      <div><svg class="ic"><use href="#i-clock"/></svg><span><%= t('contact.checkout') %></span><strong><%= site.checkOut %></strong></div>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/cta-band') %>
+<%- include('../partials/footer') %>

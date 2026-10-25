@@ -1,0 +1,129 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><%= t('hero.eyebrow') %></p>
+      <h1><%- t('hero.title') %></h1>
+      <p class="lead"><%= t('hero.sub') %></p>
+      <div class="hero-actions">
+        <a class="btn btn-solid btn-lg" href="tel:<%= site.phoneIntl %>"><svg class="ic"><use href="#i-phone"/></svg><%= t('hero.cta.call') %> · <%= site.phoneDisplay %></a>
+        <a class="btn btn-line btn-lg" href="<%= p.rooms %>"><%= t('hero.cta.rooms') %><svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
+      <dl class="facts">
+        <div><dt><%= t('facts.rooms') %></dt><dd><%= rooms.length %></dd></div>
+        <div><dt><%= t('facts.in') %></dt><dd><%= site.checkIn %></dd></div>
+        <div><dt><%= t('facts.out') %></dt><dd><%= site.checkOut %></dd></div>
+        <div><dt><%= t('facts.from') %></dt><dd>399K</dd></div>
+      </dl>
+    </div>
+    <div class="hero-art" aria-hidden="false">
+      <div class="arch arch-lg"><img src="/img/rooms/lavender/02.webp" alt="<%= lang === 'vi' ? 'Phòng Lavender với tường vòm xanh lam' : 'Lavender room with a blue arch wall' %>" width="1600" height="1067" fetchpriority="high"></div>
+      <div class="arch arch-sm"><img src="/img/rooms/atiso/07.webp" alt="<%= lang === 'vi' ? 'Phòng Atiso sắc vàng' : 'Artichoke room in yellow' %>" width="1600" height="1067"></div>
+      <div class="hero-badge"><svg class="ic"><use href="#i-phone"/></svg><span><%= t('hero.badge') %></span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section about">
+  <div class="wrap about-grid">
+    <div class="about-media" data-reveal>
+      <div class="arch"><img src="/img/rooms/gac-mai/15.webp" alt="<%= lang === 'vi' ? 'Phòng Hướng Dương' : 'Sunflower attic room' %>" width="1600" height="1067" loading="lazy"></div>
+    </div>
+    <div class="about-copy" data-reveal>
+      <p class="eyebrow"><%= t('about.eyebrow') %></p>
+      <h2><%= t('about.title') %></h2>
+      <p><%= t('about.p1') %></p>
+      <p><%= t('about.p2') %></p>
+      <ul class="about-feats">
+        <li><svg class="ic"><use href="#i-pin"/></svg><div><h3><%= t('about.f1.t') %></h3><p><%= t('about.f1.d') %></p></div></li>
+        <li><svg class="ic"><use href="#i-gift"/></svg><div><h3><%= t('about.f2.t') %></h3><p><%= t('about.f2.d') %></p></div></li>
+        <li><svg class="ic"><use href="#i-sun"/></svg><div><h3><%= t('about.f3.t') %></h3><p><%= t('about.f3.d') %></p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section-sand">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow"><%= t('rooms.eyebrow') %></p>
+      <h2><%= t('rooms.title') %></h2>
+      <p class="lead"><%= t('rooms.lead') %></p>
+    </div>
+    <div class="room-grid">
+      <% rooms.forEach(function (r) { %><%- include('../partials/room-card', { r: r }) %><% }) %>
+    </div>
+  </div>
+</section>
+
+<section class="section how">
+  <div class="wrap">
+    <div class="section-head section-head-light" data-reveal>
+      <p class="eyebrow"><%= t('how.eyebrow') %></p>
+      <h2><%= t('how.title') %></h2>
+    </div>
+    <ol class="steps">
+      <li data-reveal><span class="step-n">1</span><h3><%= t('how.s1.t') %></h3><p><%= t('how.s1.d') %></p></li>
+      <li data-reveal><span class="step-n">2</span><h3><%= t('how.s2.t') %></h3><p><%= t('how.s2.d') %></p></li>
+      <li data-reveal><span class="step-n">3</span><h3><%= t('how.s3.t') %></h3><p><%= t('how.s3.d') %></p></li>
+    </ol>
+    <p class="how-call" data-reveal><a href="tel:<%= site.phoneIntl %>"><svg class="ic"><use href="#i-phone"/></svg><%= site.phoneDisplay %></a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow"><%= t('svc.eyebrow') %></p>
+      <h2><%= t('svc.title') %></h2>
+    </div>
+    <div class="svc-grid">
+      <article class="svc-card" data-reveal>
+        <img src="/img/services/amenity-kit.webp" alt="" width="1400" height="990" loading="lazy">
+        <div><h3><%= t('svc.kit.t') %></h3><p><%= t('svc.kit.d') %></p><p class="svc-price"><%= t('svc.kit.p') %></p></div>
+      </article>
+      <article class="svc-card" data-reveal>
+        <img src="/img/services/helmet.webp" alt="" width="1400" height="700" loading="lazy">
+        <div><h3><%= t('svc.bike.t') %></h3><p><%= t('svc.bike.d') %></p><p class="svc-price"><%= t('svc.bike.p') %></p></div>
+      </article>
+      <article class="svc-card svc-card-text" data-reveal>
+        <svg class="ic ic-xl"><use href="#i-shirt"/></svg>
+        <div><h3><%= t('svc.laundry.t') %></h3><p><%= t('svc.laundry.d') %></p><p class="svc-price"><%= t('svc.laundry.p') %></p></div>
+      </article>
+    </div>
+    <p class="center" data-reveal><a class="link-arrow" href="<%= p.services %>"><%= t('svc.more') %><svg class="ic"><use href="#i-arrow"/></svg></a></p>
+  </div>
+</section>
+
+<section class="strip" aria-label="<%= t('detail.gallery') %>">
+  <div class="strip-track">
+    <% ['lavender/14','atiso/10','gac-mai/06','cam-tu-cau/07','mai-anh-dao/03','mimosa/06','tam-giac-mach/02','atiso/03'].forEach(function (s) { const [d, n] = s.split('/'); %>
+    <img src="/img/rooms/<%= d %>/<%= n %>-t.webp" alt="Chloe Homestay" width="640" height="427" loading="lazy">
+    <% }) %>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap loc-grid">
+    <div class="loc-copy" data-reveal>
+      <p class="eyebrow"><%= t('contact.eyebrow') %></p>
+      <h2><%= t('contact.title') %></h2>
+      <p><%= t('contact.lead') %></p>
+      <ul class="info-list">
+        <li><svg class="ic"><use href="#i-pin"/></svg><span><%= address %></span></li>
+        <li><svg class="ic"><use href="#i-clock"/></svg><span><%= t('contact.checkin') %> <%= site.checkIn %> · <%= t('contact.checkout') %> <%= site.checkOut %></span></li>
+        <li><svg class="ic"><use href="#i-phone"/></svg><a href="tel:<%= site.phoneIntl %>"><%= site.phoneDisplay %></a></li>
+      </ul>
+      <a class="btn btn-line" href="<%= site.mapLink %>" target="_blank" rel="noopener"><svg class="ic"><use href="#i-pin"/></svg><%= t('contact.directions') %></a>
+    </div>
+    <div class="map" data-reveal>
+      <iframe title="<%= t('contact.map') %>" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=<%= encodeURIComponent(site.address) %>&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/cta-band') %>
+<%- include('../partials/footer') %>

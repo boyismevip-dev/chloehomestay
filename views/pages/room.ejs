@@ -1,0 +1,87 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<% const photos = room.photos; const others = rooms.filter(function (x) { return x.slug !== room.slug; }).slice(0, 4); %>
+<section class="room-hero">
+  <div class="wrap">
+    <a class="back" href="<%= p.rooms %>"><svg class="ic"><use href="#i-left"/></svg><%= t('detail.back') %></a>
+    <div class="room-title">
+      <p class="eyebrow"><%= L(room.tag) %></p>
+      <h1><%= L(room.name) %></h1>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tight">
+  <div class="wrap room-layout">
+    <div class="room-main">
+      <% if (photos.length) { %>
+      <div class="gallery" data-gallery aria-label="<%= t('detail.gallery') %>">
+        <button type="button" class="g-main" data-index="0" aria-label="<%= t('detail.open') %>">
+          <img src="<%= photos[0].full %>" alt="<%= L(room.name) %> — 1" width="1600" height="1067" fetchpriority="high">
+        </button>
+        <% photos.slice(1).forEach(function (ph, i) { %>
+        <button type="button" class="g-thumb" data-index="<%= i + 1 %>" aria-label="<%= t('detail.open') %> <%= i + 2 %>">
+          <img src="<%= ph.thumb %>" data-full="<%= ph.full %>" alt="<%= L(room.name) %> — <%= i + 2 %>" width="640" height="427" loading="lazy">
+        </button>
+        <% }) %>
+      </div>
+      <% } else { %>
+      <div class="gallery-ph">
+        <img src="/img/brand/logo-white.png" alt="" width="110" height="120">
+        <p><%= t('rooms.soon') %></p>
+      </div>
+      <% } %>
+
+      <div class="room-desc">
+        <p class="lead"><%= L(room.description) %></p>
+        <h2 class="h3"><%= t('detail.features') %></h2>
+        <ul class="check-list">
+          <% L(room.features).forEach(function (f) { %><li><svg class="ic"><use href="#i-check"/></svg><%= f %></li><% }) %>
+        </ul>
+      </div>
+    </div>
+
+    <aside class="book-card" aria-label="<%= t('detail.book.title') %>">
+      <ul class="bc-prices">
+        <li><span><%= t('detail.price.wk') %></span><strong><%= money(room.price) %>đ</strong></li>
+        <li><span><%= t('detail.price.we') %></span><strong><%= money(room.priceWeekend) %>đ</strong></li>
+      </ul>
+      <p class="bc-label"><%= t('rooms.night') %></p>
+      <p class="bc-note"><%= t('detail.price.note') %></p>
+      <hr>
+      <ul class="bc-facts">
+        <% if (room.area) { %><li><span><%= t('detail.area') %></span><strong><%= room.area %> <%= t('rooms.sqm') %></strong></li><% } %>
+        <% if (room.guests) { %><li><span><%= t('detail.guests') %></span><strong><%= room.guests %></strong></li><% } %>
+        <li><span><%= t('contact.checkin') %></span><strong><%= site.checkIn %></strong></li>
+        <li><span><%= t('contact.checkout') %></span><strong><%= site.checkOut %></strong></li>
+      </ul>
+      <h2 class="h4"><%= t('detail.book.title') %></h2>
+      <p class="bc-text"><%= t('detail.book.text') %></p>
+      <a class="btn btn-solid btn-block btn-lg" href="tel:<%= site.phoneIntl %>"><svg class="ic"><use href="#i-phone"/></svg><%= site.phoneDisplay %></a>
+      <a class="btn btn-line btn-block" href="<%= site.zalo %>" target="_blank" rel="noopener"><svg class="ic"><use href="#i-msg"/></svg>Zalo</a>
+    </aside>
+  </div>
+</section>
+
+<section class="section section-sand">
+  <div class="wrap">
+    <div class="section-head" data-reveal><h2><%= t('detail.others') %></h2></div>
+    <div class="room-grid room-grid-4">
+      <% others.forEach(function (r) { %><%- include('../partials/room-card', { r: r }) %><% }) %>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/cta-band') %>
+
+<% if (photos.length) { %>
+<div class="lightbox" data-lightbox hidden role="dialog" aria-modal="true" aria-label="<%= L(room.name) %>">
+  <button type="button" class="lb-btn lb-close" data-lb="close" aria-label="<%= t('detail.closeimg') %>"><svg class="ic"><use href="#i-x"/></svg></button>
+  <button type="button" class="lb-btn lb-prev" data-lb="prev" aria-label="<%= t('detail.prev') %>"><svg class="ic"><use href="#i-left"/></svg></button>
+  <img class="lb-img" alt="">
+  <button type="button" class="lb-btn lb-next" data-lb="next" aria-label="<%= t('detail.next') %>"><svg class="ic"><use href="#i-right"/></svg></button>
+  <p class="lb-count" aria-live="polite"></p>
+</div>
+<% } %>
+<%- include('../partials/footer') %>

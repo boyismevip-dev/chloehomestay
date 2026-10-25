@@ -1,0 +1,27 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow"><%= t('rooms.eyebrow') %></p>
+    <h1><%= t('rooms.title') %></h1>
+    <p class="lead"><%= t('rooms.lead') %></p>
+  </div>
+</section>
+
+<section class="section section-tight">
+  <div class="wrap">
+    <div class="filters" role="group" aria-label="<%= t('rooms.eyebrow') %>">
+      <button type="button" class="chip is-on" data-filter="all" aria-pressed="true"><%= t('rooms.filter.all') %></button>
+      <button type="button" class="chip" data-filter="balcony" aria-pressed="false"><%= t('rooms.filter.balcony') %></button>
+      <button type="button" class="chip" data-filter="window" aria-pressed="false"><%= t('rooms.filter.window') %></button>
+      <button type="button" class="chip" data-filter="budget" aria-pressed="false"><%= t('rooms.filter.budget') %></button>
+    </div>
+    <div class="room-grid" data-room-grid>
+      <% rooms.forEach(function (r) { %><%- include('../partials/room-card', { r: r }) %><% }) %>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/cta-band') %>
+<%- include('../partials/footer') %>

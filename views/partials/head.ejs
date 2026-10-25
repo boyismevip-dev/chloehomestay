@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="<%= lang %>">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= metaTitle %></title>
+  <meta name="description" content="<%= metaDesc %>">
+  <meta name="theme-color" content="#083529">
+  <% const base = site.baseUrl; const ogImg = (typeof ogImage !== 'undefined' && ogImage) ? ogImage : '/img/og.jpg'; %>
+  <link rel="canonical" href="<%= base %><%= canonicalPath %>">
+  <% if (altPath) { %>
+  <link rel="alternate" hreflang="<%= lang %>" href="<%= base %><%= canonicalPath %>">
+  <link rel="alternate" hreflang="<%= otherLang %>" href="<%= base %><%= altPath %>">
+  <% } %>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Chloe Homestay">
+  <meta property="og:title" content="<%= metaTitle %>">
+  <meta property="og:description" content="<%= metaDesc %>">
+  <meta property="og:url" content="<%= base %><%= canonicalPath %>">
+  <meta property="og:image" content="<%= base %><%= ogImg %>">
+  <meta property="og:locale" content="<%= lang === 'vi' ? 'vi_VN' : 'en_US' %>">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="/img/brand/favicon.png">
+  <link rel="apple-touch-icon" href="/img/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css?v=<%= v %>">
+  <script src="/js/boot.js?v=<%= v %>"></script>
+  <% if (pageKey === 'home') { %>
+  <script type="application/ld+json"><%- JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'LodgingBusiness',
+    name: 'Chloe Homestay',
+    url: base,
+    image: base + '/img/og.jpg',
+    telephone: site.phoneIntl,
+    email: site.email,
+    priceRange: '399.000đ - 949.000đ',
+    checkinTime: site.checkIn,
+    checkoutTime: site.checkOut,
+    address: { '@type': 'PostalAddress', streetAddress: 'Lô LK02 phân khu D, Khu D, Khu Văn hóa - Thể thao, Lang Biang', addressLocality: 'Đà Lạt', addressRegion: 'Lâm Đồng', postalCode: '671940', addressCountry: 'VN' },
+    sameAs: [site.facebook, site.mapLink]
+  }) %></script>
+  <% } %>
+</head>
+<body class="page-<%= pageKey %>">
+<%- include('icons') %>
+<a class="skip" href="#main"><%= t('nav.skip') %></a>

@@ -1,0 +1,23 @@
+<header class="site-header" data-header>
+  <div class="wrap header-in">
+    <a class="brand" href="<%= p.home %>" aria-label="Chloe Homestay">
+      <img src="/img/brand/logo-green.png" alt="Chloe Homestay" width="46" height="50">
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="<%= p.home %>" class="<%= pageKey === 'home' ? 'is-active' : '' %>"><%= t('nav.home') %></a>
+      <a href="<%= p.rooms %>" class="<%= (pageKey === 'rooms' || pageKey === 'room') ? 'is-active' : '' %>"><%= t('nav.rooms') %></a>
+      <a href="<%= p.services %>" class="<%= pageKey === 'services' ? 'is-active' : '' %>"><%= t('nav.services') %></a>
+      <a href="<%= p.contact %>" class="<%= pageKey === 'contact' ? 'is-active' : '' %>"><%= t('nav.contact') %></a>
+    </nav>
+    <div class="header-actions">
+      <% if (altPath) { %>
+      <a class="lang" href="<%= altPath %>" hreflang="<%= otherLang %>" lang="<%= otherLang %>" aria-label="<%= t('nav.lang') %>"><%= otherLang === 'en' ? 'EN' : 'VI' %></a>
+      <% } %>
+      <a class="btn btn-solid btn-sm header-call" href="tel:<%= site.phoneIntl %>"><svg class="ic"><use href="#i-phone"/></svg><span><%= site.phoneDisplay %></span></a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" data-menu aria-label="<%= t('nav.menu') %>">
+        <svg class="ic ic-open"><use href="#i-menu"/></svg><svg class="ic ic-close"><use href="#i-x"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main">
